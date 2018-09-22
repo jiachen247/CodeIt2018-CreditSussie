@@ -1,6 +1,6 @@
 import logging
 import pandas as pd
-import numpy as np
+import operator
 from sklearn import linear_model
 import requests
 from flask import request, jsonify
@@ -18,7 +18,11 @@ def evaluate_deeplearning2():
     answer = []
     for x in question:
         res = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=x)
-        answer.append(max(res.json()[0].items(), key=np.operator.itemgetter(1))[0])
+        r = res.json().get("results")[0]
+
+
+
+        answer.append(max(r.iteritems(), key=operator.itemgetter(1))[0])
         sleep(0.1)
 
 
