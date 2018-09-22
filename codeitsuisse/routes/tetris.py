@@ -5,8 +5,8 @@ from flask import request, jsonify;
 from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
-@app.route('/prime-sum', methods=['POST','GET'])
-def evaluate_prime_sum():
+@app.route('/tetris', methods=['POST','GET'])
+def evaluate_tetris():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
     tetros = data.get("tetronimoSequence");
