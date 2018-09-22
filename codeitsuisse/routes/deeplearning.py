@@ -21,8 +21,11 @@ def evaluate_deeplearning2():
         r = res.json().get("results")[0]
 
 
+        print("rrrrrr")
+        print(r)
 
-        answer.append(max(r.iteritems(), key=operator.itemgetter(1))[0])
+
+        answer.append(r.index(max(r)))
         sleep(0.1)
 
 
