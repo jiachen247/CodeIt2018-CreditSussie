@@ -9,3 +9,4 @@ import codeitsuisse.routes.customer
 import codeitsuisse.routes.sorting
 import codeitsuisse.routes.cust2
 import codeitsuisse.routes.broadcaster
+import codeitsuisse.routes.broadcasterpt2

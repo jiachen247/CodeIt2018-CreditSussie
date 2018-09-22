@@ -18,12 +18,10 @@ def evaluate_broadcaster():
             broadcast[0].append(a)
         broadcast[1].append(b)
     first = broadcast[0]
-    print(first)
     second = broadcast[1]
-    print(second)
     newlist = []
     for i in first:
-        if i not in newlist and i not in second:
+        if (i not in newlist) and (i not in second):
             newlist.append(i)
     result = {"result": newlist}
     print("Output Data:", result)
