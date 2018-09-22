@@ -17,9 +17,8 @@ def evaluate_deeplearning2():
 
     answer = []
 
-
     def _invert(o):
-        return 255 - o
+        return abs(255 - o)
     for x in question:
 
         res = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=list(map(_invert, x)))
