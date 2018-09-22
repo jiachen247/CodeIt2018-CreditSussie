@@ -3,47 +3,46 @@ import sys
 
 sys.setrecursionlimit(362880000)
 
-input = '{' \
-  '"puzzle":[' \
-            '[1,2,3],' \
-            '[4,8,5]' \
-            '[7,6,0]' \
-          ']' \
-    '}'
-'}'
-
 puzzle = (
     (1,2,3),
 (4,8,5),
 (7,6,0)
 )
 
-matrix_dimensions = 3
-
-
+x_matrix_dimensions = len(puzzle)
+y_matrix_dimensions = len(puzzle)
 
 state = []
+
 SOLN = (
     (1,2,3),
     (4,5,6),
     (7,8,0)
 )
 
-def _hash(p):
-    return (p[0][0] * 1) * \
-           (p[0][1] * 2) * \
-           (p[0][2] * 3) * \
-           (p[1][0] * 5) * \
-           (p[1][1] * 7) * \
-           (p[1][2] * 9) * \
-           (p[2][0] * 11) * \
-           (p[2][1] * 13) * \
-           (p[2][2] * 17)
+
+def check(p):
+
+    if p[x_matrix_dimensions-1][y_matrix_dimensions-1] != 0:
+        return False
+
+    else:
+        i =[item for sublist in p for item in sublist]
+        print(i)
+
+        for a in range(x_matrix_dimensions * y_matrix_dimensions):
+            if a == x_matrix_dimensions * y_matrix_dimensions - 1:
+                if p[a] == 0:
+                    return True
+            if i[a] > i[a+1]
+
+
+    return True
 
 def find_zero(p):
 
-    for x in range(matrix_dimensions):
-        for y in range(matrix_dimensions):
+    for x in range(x_matrix_dimensions):
+        for y in range(y_matrix_dimensions):
             if p[x][y] == 0:
                 return [x,y]
 
@@ -52,26 +51,39 @@ def find_zero(p):
 
 
 
-def calculate_moves(zero_index):
+def calculate_moves(p, zero_index):
+
     moves = []
 
     x = zero_index[0]
     y = zero_index[1]
-
-
+    print(x,y)
 
     if y > 0:
-        moves.append([x, y-1])
-
+        if y == 1:
+            if not (p[0][0] == 1 and p[1][0] == 4 and p[2][0] == 7):
+                moves.append([x, y - 1])
+            else:
+                print("147 done")
+        else:
+            moves.append([x, y - 1])
     if y < 2:
         moves.append([x, y+1])
 
     if x > 0:
-        moves.append([x - 1, y])
+        if x == 1:
+            print("x == 1")
+            if p[0] != (1, 2, 3):
+                moves.append([x - 1, y])
+            else:
+                print("123 done")
+        else:
+            moves.append([x - 1, y])
 
     if x < 2:
         moves.append([x + 1, y])
 
+    print(moves)
     return moves
 
 TARGET_HASH = 304
@@ -83,6 +95,7 @@ def swap_moves(p, zero_index, target):
     return tuple(p1)
 
 def solve(p, history):
+    print(p)
     global state
     # print("P : {}".format(p))
     #print("s: {}".format(state))
@@ -100,7 +113,7 @@ def solve(p, history):
     state  = state + [p]
     zero_index = find_zero(p)
 
-    moves = calculate_moves(zero_index)
+    moves = calculate_moves(p, zero_index)
 
     for move in moves:
         # print("history {}".format(history))
@@ -127,8 +140,8 @@ def solve(p, history):
 #     [7,8,0]
 # ])) # 304
 
-
-print(solve(puzzle, []))
+check(puzzle)
+# print(solve(puzzle, []))
 
 
 
