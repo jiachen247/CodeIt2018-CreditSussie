@@ -20,14 +20,18 @@ def evaluate_deeplearning2():
         res = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=x)
         r = res.json().get("results")[0]
 
+        def _round(x):
+            return round(x, 5)
+
+        rr = map(_round, r)
+
 
         print("rrrrrr")
-        print(r)
+        print(rr)
         maxx = 0
         maxx_index = -1
         index = 0
-        for val in r:
-
+        for val in rr:
             if val > maxx:
                 maxx = val
                 maxx_index = index
