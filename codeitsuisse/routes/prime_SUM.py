@@ -23,7 +23,6 @@ def evaluate_prime_sum():
     def primer(inp):
         if is_prime(inp):
             pris.append(inp)
-            return result
         elif is_prime(inp - 2):
             pris.append(inp - 2)
             pris.append(2)
