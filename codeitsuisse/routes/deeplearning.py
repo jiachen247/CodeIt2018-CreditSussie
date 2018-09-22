@@ -17,7 +17,7 @@ def evaluate_deeplearning2():
     res = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=question[0])
     print(res.json())
     # sleep(0.1)
-    return
+    return jsonify({"results": 1})
 
 
 
