@@ -35,14 +35,14 @@ def evaluate_tally_expense():
         balances = {}
         diff_highest_lowest = sorted_tally[0][1] + sorted_tally[-1][1] 
         if diff_highest_lowest > 0: 
-            balances["from"] = sorted_tally[-1][0]
-            balances["to"] = sorted_tally[0][0]
+            balances["from"] = sorted_tally[0][0]
+            balances["to"] = sorted_tally[-1][0]
             balances["amount"] = round(abs(sorted_tally[-1][1]), 2)
             tally[sorted_tally[-1][0]] = 0 
             tally[sorted_tally[0][0]] = diff_highest_lowest 
         else:  
-            balances["from"] = sorted_tally[-1][0]
-            balances["to"] = sorted_tally[0][0]
+            balances["from"] = sorted_tally[0][0] 
+            balances["to"] = sorted_tally[-1][0]
             balances["amount"] = round(abs(sorted_tally[0][1]), 2)
             tally[sorted_tally[-1][0]] = diff_highest_lowest 
             tally[sorted_tally[0][0]] = 0
