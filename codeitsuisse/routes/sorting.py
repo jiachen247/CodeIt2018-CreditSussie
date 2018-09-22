@@ -15,7 +15,7 @@ def evaluate_sorting():
     input_string =[item for sublist in data for item in sublist]
     print(input_string)
 
-    dictToSend = {'size': len(data), 'values': input_string}
+    dictToSend = {'size': len(data), 'values': ",".join(input_string)}
     res = requests.post('https://sortingame.herokuapp.com/', json=dictToSend)
 
     print(res.text)
