@@ -2,8 +2,6 @@ import networkx as nx
 import logging
 from flask import request, jsonify;
 from codeitsuisse import app;
-
-
 logger = logging.getLogger(__name__)
 @app.route('/broadcaster/fastest-path', methods=['POST','GET'])
 def evaluate_fastest_path():
@@ -23,4 +21,5 @@ def evaluate_fastest_path():
     z = nx.dijkstra_path(G, sender, recipient)
     result = {"result": z}
     print("Output Data:", result)
-    logging.info("My result :{}".forms
+    logging.info("My result :{}".forms)
+    return jsonify(result);
