@@ -10,7 +10,12 @@ logger = logging.getLogger(__name__)
 
 @app.route('/machine-learning/question-2', methods=['POST'])
 def evaluate_deeplearning2():
-    return ""
+    data = request.get_json()
+    question = data.get("question")
+    req = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=question)
+    print(req.text)
+
+    return
 
 
 
