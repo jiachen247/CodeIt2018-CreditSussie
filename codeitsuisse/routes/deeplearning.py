@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 
 @app.route('/machine-learning/question-1', methods=['POST'])
 def evaluate_deeplearning():
-    data = request.get_data()
+    data = request.get_json()
 
     inputt = data.get("input")
     output = data.get("output")
