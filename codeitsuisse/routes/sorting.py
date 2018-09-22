@@ -1,5 +1,6 @@
 import logging
 
+import requests
 from flask import request, jsonify
 
 from codeitsuisse import app
@@ -11,13 +12,12 @@ def evaluate_sorting():
     data = request.get_json()
 
     input_string =[item for sublist in data for item in sublist]
-    print(input)
+    print(input_string)
 
+    dictToSend = {'size': len(data), 'values': input_string}
+    res = requests.post('https://sortingame.herokuapp.com/', json=dictToSend)
 
-    b = Board(len(data), input_string)
-    print(b)
-    m = b.get_solution()
-    print(m)
+    print(res.text)
 
 
     print("input: {}".format(data))

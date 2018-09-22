@@ -228,10 +228,3 @@ class Node:
     def __lt__(self, rhs):
         # when comparing nodes (sorting), compare their estimates (so they are sorted by estimates)
         return self.estimate < rhs.estimate
-
-
-b = Board(3, "1,8,7,3,0,5,4,6,2")
-print(b)
-m = b.get_solution()
-
-print(m)
