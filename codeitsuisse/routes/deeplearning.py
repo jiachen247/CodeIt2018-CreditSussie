@@ -23,7 +23,7 @@ def evaluate_deeplearning2():
         def _round(x):
             return round(x, 5)
 
-        rr = map(_round, r)
+        rr = list(map(_round, r))
 
 
         print("rrrrrr")
