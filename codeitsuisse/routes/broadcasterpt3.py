@@ -21,5 +21,5 @@ def evaluate_fastest_path():
     z = nx.dijkstra_path(G, sender, recipient)
     result = {"result": z}
     print("Output Data:", result)
-    logging.info("My result :{}".forms)
+    logging.info("My result :{}".format(result))
     return jsonify(result);
