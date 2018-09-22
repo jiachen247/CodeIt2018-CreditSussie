@@ -4,7 +4,7 @@ from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
 @app.route('/customers-and-hotel/minimum-distance', methods=['POST','GET'])
-def evaluate_minimum-distance():
+def evaluate_minimum_distance():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
     custs = data.get("input");
