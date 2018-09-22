@@ -45,7 +45,7 @@ def evaluate_imagesGPS():
         lon = _convert_to_degress(x[4])
         if x[3] == "W":
             lon = -lon
-        newlst.append({"lat":lat,"lon":lon})
+        newlst.append({"lat":lat,"long":lon})
     result = newlst
     print(result)
     logging.info("My result :{}".format(result))
