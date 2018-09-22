@@ -32,19 +32,19 @@ def evaluate():
     while sorted(tally.items(), key=operator.itemgetter(1),reverse=True)[0][1]>0.0001:
         sorted_tally = sorted(tally.items(), key=operator.itemgetter(1),reverse=True)
         balances = {}
-        diff_highest_lowest = sorted_tally[0][1] + sorted_tally[-1][1] # Note that array[-1] is the last element of an array (for us: lowest value)
-        if diff_highest_lowest > 0: # In this case the lowest amount can't fill the highest amount
+        diff_highest_lowest = sorted_tally[0][1] + sorted_tally[-1][1] 
+        if diff_highest_lowest > 0: 
             balances["from"] = sorted_tally[-1][0]
             balances["to"] = sorted_tally[0][0]
             balances["amount"] = abs(sorted_tally[-1][1])
-            tally[sorted_tally[-1][0]] = 0 # The lowest bill is done paying!
-            tally[sorted_tally[0][0]] = diff_highest_lowest # The person with the most amount of money still needs to receive money
-        else: # The highest amount gets completely paid off. 
+            tally[sorted_tally[-1][0]] = 0 
+            tally[sorted_tally[0][0]] = diff_highest_lowest 
+        else:  
             balances["from"] = sorted_tally[-1][0]
             balances["to"] = sorted_tally[0][0]
             balances["amount"] = abs(sorted_tally[0][1])
-            tally[sorted_tally[-1][0]] = diff_highest_lowest # The lowest person still has to pay
-            tally[sorted_tally[0][0]] = 0 # The richest person got all of his money
+            tally[sorted_tally[-1][0]] = diff_highest_lowest 
+            tally[sorted_tally[0][0]] = 0
         balancer["transactions"].append(balances)
     result = balancer
     logging.info("My result :{}".format(result))
