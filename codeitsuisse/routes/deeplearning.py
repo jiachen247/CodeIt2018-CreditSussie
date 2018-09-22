@@ -23,9 +23,18 @@ def evaluate_deeplearning2():
 
         print("rrrrrr")
         print(r)
+        maxx = 0
+        maxx_index = -1
+        index = 0
+        for val in r:
 
+            if val > maxx:
+                maxx = val
+                maxx_index = index
 
-        answer.append(r.index(max(r)))
+            index += 1
+
+        answer.append(maxx_index)
         sleep(0.1)
 
 
