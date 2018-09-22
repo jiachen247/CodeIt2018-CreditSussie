@@ -12,3 +12,4 @@ import codeitsuisse.routes.broadcaster
 import codeitsuisse.routes.broadcasterpt2
 import codeitsuisse.routes.broadcasterpt3
 import codeitsuisse.routes.deeplearning
+import codeitsuisse.routes.photogps2
