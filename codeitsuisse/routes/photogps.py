@@ -15,9 +15,9 @@ logger = logging.getLogger(__name__)
 @app.route('/imagesGPS', methods=['POST', 'GET'])
 def upload_file():
 
-    # content = request.get_json()
+    logging.info("data sent for evaluation {}".format(data))
     content = request.get_json()
-    # print (content)
+    
     return jsonify(main(content))
 
 def main(content):
