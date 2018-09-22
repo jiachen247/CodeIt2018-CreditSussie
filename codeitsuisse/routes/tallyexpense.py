@@ -1,5 +1,5 @@
 import logging
-
+import operator
 from flask import request, jsonify;
 
 from codeitsuisse import app;
@@ -19,7 +19,7 @@ def evaluate():
         amount = x.get("amount")
         paidBy = x.get("paidBy")
         exclude = x.get("exclude")
-        if ifinstance(exclude, list):
+        if isinstance(exclude, list):
             payable = [a for a in list_of_persons if (not a in exclude)]
         else:
             payable = [a for a in list_of_persons if not a == exclude]
