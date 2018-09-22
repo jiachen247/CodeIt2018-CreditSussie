@@ -119,8 +119,8 @@ def get_lat_lon(exif_data):
 
     return lat, lon
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
 
 
 
