@@ -8,7 +8,7 @@ from codeitsuisse import app;
 logger = logging.getLogger(__name__)
 
 @app.route('/tally-expense', methods=['POST','GET'])
-def evaluate():
+def evaluate_tally_expense():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
     list_of_persons = data.get("persons");
