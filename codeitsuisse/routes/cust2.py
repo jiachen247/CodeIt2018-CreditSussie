@@ -29,4 +29,3 @@ def evaluate_minimum_camps():
             return 1 + checker(lst, nxtind, nxtind+1)
     result = {'answer':checker(sorted_lst, 0, 1)}
     print(result)
-evaluate_minimum_camps()
