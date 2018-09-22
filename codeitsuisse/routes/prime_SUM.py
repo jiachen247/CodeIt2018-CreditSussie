@@ -47,6 +47,7 @@ def evaluate_prime_sum():
             elif x != None:
                 z.append(x)
         return z
-    result = func(primelst)[0].reverse()
+    result = func(primelst)[0]
+    func(primelst)[0].reverse()
     logging.info("My result :{}".format(result))
     return jsonify(result);
