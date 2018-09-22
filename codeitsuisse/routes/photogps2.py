@@ -6,6 +6,7 @@ logger = logging.getLogger(__name__)
 @app.route('/imagesGPS', methods=['POST','GET'])
 def evaluate_imagesGPS():
     data = request.get_json();
+    print(data)
     logging.info("data sent for evaluation {}".format(data))
     pathlist = data.get()
     print('Input:', pathlist)
