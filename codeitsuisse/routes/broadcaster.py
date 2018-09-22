@@ -8,7 +8,7 @@ def evaluate_broadcaster():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
     node_list = data.get("data");
-    print(node_list)
+    print("Input Data:", node_list)
     broadcast = [[],[]]
     for x in node_list:
         (a, b) = x.split('->')
@@ -25,7 +25,7 @@ def evaluate_broadcaster():
     for i in first:
         if i not in newlist and i not in second:
             newlist.append(i)
-    result = newlist
-    print(result)
+    result = {"result": newlist}
+    print("Output Data:", result)
     logging.info("My result :{}".format(result))
     return jsonify(result);
