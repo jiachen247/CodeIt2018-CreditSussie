@@ -15,3 +15,4 @@ import codeitsuisse.routes.deeplearning
 # import codeitsuisse.routes.photogps2
 import codeitsuisse.routes.atc
 import codeitsuisse.routes.skills
+import codeitsuisse.routes.tetris
