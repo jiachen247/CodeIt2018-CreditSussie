@@ -14,8 +14,7 @@ def upload_file():
 
     # content = request.get_json()
     content = request.get_json()
-    print('hi')
-    print (content)
+    # print (content)
     return jsonify(main(content))
 
 def main(content):
@@ -25,15 +24,24 @@ def main(content):
 
     n = 0
     for every_image in content:
+        print (every_image)
         n += 1
-        image_url = every_image["path"]
-        urllib.urlretrieve(image_url, "{count}.jpg".format(count=n))
+        
+    # if (every_image['path']):
+
+
+        image_url = every_image['path']            
+        # print (image_url)
+        urllib.request.urlretrieve(image_url, "{count}.jpg".format(count=n))
 
         image = Image.open("{count}.jpg".format(count=n))
         # get all the exif_data from each image
         exif_data = get_exif_data(image)
         lat, lon = get_lat_lon(exif_data)
         lat_lon_list.append({"lat":lat, "lon": lon})
+
+        # else: 
+        #     print("second")
 
     return lat_lon_list
 
@@ -67,6 +75,7 @@ def get_if_exist(data, key):
     return None
 
 def _convert_to_degress(value):
+
     """Helper function to convert the GPS coordinates stored in the EXIF to degress in float format"""
     d0 = value[0][0]
     d1 = value[0][1]
@@ -83,6 +92,7 @@ def _convert_to_degress(value):
     return d + (m / 60.0) + (s / 3600.0)
 
 def get_lat_lon(exif_data):
+    print ("getting lat and lon")
     """Returns the latitude and longitude, if available, from the provided exif_data (obtained through get_exif_data above)"""
     lat = None
     lon = None
@@ -97,10 +107,13 @@ def get_lat_lon(exif_data):
 
         if gps_latitude and gps_latitude_ref and gps_longitude and gps_longitude_ref:
             lat = _convert_to_degress(gps_latitude)
+            print ("converting lat to degrees")
             if gps_latitude_ref != "N":
                 lat = 0 - lat
 
             lon = _convert_to_degress(gps_longitude)
+            print ("converting lon to degrees")
+
             if gps_longitude_ref != "E":
                 lon = 0 - lon
 
