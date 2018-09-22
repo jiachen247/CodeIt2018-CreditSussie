@@ -43,12 +43,11 @@ def evaluate_sorting():
         p[target[0]][target[1]] = 0
         return p[z[0]][z[1]]
 
-
-
     print("input: {}".format(data))
+    print("moves: {}".format(moves) )
 
     for move in moves:
-        print(move)
+
         results.append(swap_moves(data, move))
     return jsonify({ "result": results})
 
