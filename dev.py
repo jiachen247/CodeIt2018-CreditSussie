@@ -1,6 +1,7 @@
 # 1. Sorting Game
 import sys
-sys.setrecursionlimit(362880)
+
+sys.setrecursionlimit(362880000)
 
 input = '{' \
   '"puzzle":[' \
@@ -17,7 +18,7 @@ puzzle = (
 (7,6,0)
 )
 
-matrix_dimensions = len(puzzle)
+matrix_dimensions = 3
 
 
 
@@ -40,7 +41,6 @@ def _hash(p):
            (p[2][2] * 17)
 
 def find_zero(p):
-
 
     for x in range(matrix_dimensions):
         for y in range(matrix_dimensions):
@@ -84,7 +84,7 @@ def swap_moves(p, zero_index, target):
 
 def solve(p, history):
     global state
-    print("P : {}".format(p))
+    # print("P : {}".format(p))
     #print("s: {}".format(state))
     # current_hash = _hash(p)
     # print("HASH : {}".format(current_hash))
@@ -103,17 +103,16 @@ def solve(p, history):
     moves = calculate_moves(zero_index)
 
     for move in moves:
-        print("history {}".format(history))
+        # print("history {}".format(history))
         target = p[move[0]][move[1]]
 
-        if target == 0:
-            print("hello")
-            # print(p)
         newp = swap_moves(p, zero_index, move)
-        if solve(newp, history + [target]) is not None:
-            print("FOUNDDDD FOUNDDD")
-            # print(history)
-            return history
+        if newp not in state:
+            history.append(target)
+            if solve(newp, history[:]) is not None:
+                print("FOUNDDDD FOUNDDD")
+                # print(history)
+                return history
 
     # print("endign state : {}".format(state))
     # return None

@@ -12,11 +12,11 @@ app = Flask(__name__)
 @app.route('/imagesGPS', methods=['POST'])
 def upload_file():
 
-	# content = request.get_json()
-	content = request.get_json()
-	print('hi')
-	print (content)
-	return jsonify(main(content))
+    # content = request.get_json()
+    content = request.get_json()
+    print('hi')
+    print (content)
+    return jsonify(main(content))
 
 def main(content):
 
@@ -25,28 +25,28 @@ def main(content):
 
     n = 0
     for every_image in content:
-       n += 1 
-	   image_url = every_image["path"]
-       urllib.urlretrieve(image_url, "{count}.jpg".format(count=n))
+        n += 1
+        image_url = every_image["path"]
+        urllib.urlretrieve(image_url, "{count}.jpg".format(count=n))
 
-       image = Image.open("{count}.jpg".format(count=n))
-
-       # get all the exif_data from each image 
-	   exif_data = get_exif_data(image)
+        image = Image.open("{count}.jpg".format(count=n))
+        # get all the exif_data from each image
+        exif_data = get_exif_data(image)
         lat, lon = get_lat_lon(exif_data)
-        lat_lon_list.append(list("lat":lat, "lon": lon)) 
+        lat_lon_list.append({"lat":lat, "lon": lon})
 
     return lat_lon_list
 
 def get_exif_data(image):
     """Returns a dictionary from the exif data of an PIL Image item. Also converts the GPS Tags"""
+    global decoded
     exif_data = {}
 
-	# try:
+    # try:
     info = image._getexif()
     if info:
         for tag, value in info.items():
-        	decoded = TAGS.get(tag, tag)
+            decoded = TAGS.get(tag, tag)
         if decoded == "GPSInfo":
             gps_data = {}
             for t in value:
@@ -61,10 +61,10 @@ def get_exif_data(image):
 
 
 def get_if_exist(data, key):
-	if key in data:
-		return data[key]
+    if key in data:
+        return data[key]
 
-	return None
+    return None
 
 def _convert_to_degress(value):
     """Helper function to convert the GPS coordinates stored in the EXIF to degress in float format"""
@@ -107,7 +107,7 @@ def get_lat_lon(exif_data):
     return lat, lon
 
 if __name__ == '__main__':
-	app.run(debug=True)
+    app.run(debug=True)
 
 
 
