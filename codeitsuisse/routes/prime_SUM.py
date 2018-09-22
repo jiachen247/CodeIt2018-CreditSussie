@@ -30,6 +30,7 @@ def evaluate_prime_sum():
         else:
             pris.append(3)
             primer(inp - 3)
+    primer(inputValue)
     result = pris
     logging.info("My result :{}".format(result))
     print(result)
