@@ -2,13 +2,41 @@ import logging
 import math
 from flask import request, jsonify;
 
-from codeitsuisse import app;
+# from codeitsuisse import app;
 
-logger = logging.getLogger(__name__)
-@app.route('/airtrafficcontroller', methods=['POST','GET'])
+# logger = logging.getLogger(__name__)
+# @app.route('/airtrafficcontroller', methods=['POST','GET'])
 def evaluate_airtrafficcontroller():
-    data = request.get_json()
-    logging.info("data sent for evaluation {}".format(data))
+    # data = request.get_json()
+    # logging.info("data sent for evaluation {}".format(data))
+    data = {
+    "Flights": [
+        {
+            "PlaneId": "TR123",
+            "Time": "0200"
+        },
+        {
+            "PlaneId": "SQ255",
+            "Time": "0210"
+        },
+        {
+            "PlaneId": "TH544",
+            "Time": "0155"
+        },
+        {
+            "PlaneId": "BA123",
+            "Time": "0212"
+        },
+        {
+            "PlaneId": "VA521",
+            "Time": "0230"
+        }
+    ],
+    "Static": {
+        "Runways": ["A", "B"],
+        "ReserveTime": "600"
+    }
+}
     lof = data.get("Flights")
     secs = data.get("Static")
     seconds = int(secs["ReserveTime"])
@@ -59,6 +87,6 @@ def evaluate_airtrafficcontroller():
         final.append(dic)
     result = {"Flights": final}
     print(result)
-    logging.info("My result :{}".format(result))
-    return jsonify(result)
-# evaluate_airtrafficcontroller()
+    # logging.info("My result :{}".format(result))
+    # return jsonify(result)
+evaluate_airtrafficcontroller()
