@@ -35,6 +35,10 @@ def evaluate_sorting():
 
     def swap_moves(p, target):
         z = find_zero(p)
+        print("zero")
+        print(z)
+        print("target")
+        print(target)
         p[z[0]][z[1]] = p[target[0]][target[1]]
         p[target[0]][target[1]] = 0
         return p[z[0]][z[1]]
