@@ -29,19 +29,19 @@ def evaluate_imagesGPS():
     def _convert_to_degress(value):
         d0 = value[0][0]
         d1 = value[0][1]
-        d = float(d0) / float(d1)
+        d = d0 / d1
         m0 = value[1][0]
         m1 = value[1][1]
-        m = float(m0) / float(m1)
+        m = m0 / m1
         s0 = value[2][0]
         s1 = value[2][1]
-        s = float(s0) / float(s1)
-        return d + (m / 60.0) + (s / 3600.0)
+        s = s0 / s1
+        return d + (m / 60) + (s / 3600)
     newlst = []
     for x in lst:
         lat = _convert_to_degress(x[2])
         lon = _convert_to_degress(x[4])
-        newlst.append({"lat":lon,"lon":lat})
+        newlst.append({"lat":lat,"lon":lon})
     result = newlst
     print(result)
     logging.info("My result :{}".format(result))
