@@ -5,6 +5,7 @@ import codeitsuisse.routes.tallyexpense
 import codeitsuisse.routes.test
 import codeitsuisse.routes.prime_SUM
 import codeitsuisse.routes.photogps
+import codeitsuisse.routes.customer
 
 
 
