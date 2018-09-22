@@ -70,7 +70,6 @@ def evaluate_skill():
     visited = 0
 
     while True:
-
         if len(frontier) == 0:
             print("empty... ending")
             break
@@ -107,8 +106,4 @@ def evaluate_skill():
     moves.reverse()
     print(moves)
 
-
     return jsonify(moves)
-
-
-
