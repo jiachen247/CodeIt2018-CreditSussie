@@ -7,7 +7,7 @@ logger = logging.getLogger(__name__)
 def evaluate_minimum_distance():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
-    custs = data.get("input");
+    custs = data;
     max_d = 0
     for x in range(len(custs)):
         if abs(custs.sorted()[x] - custs.sorted()[x-1]) > max_d:
