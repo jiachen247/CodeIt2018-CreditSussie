@@ -18,10 +18,11 @@ def evaluate_deeplearning2():
     answer = []
     for x in question:
         res = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=x)
-        answer.append(max(res.json().items(), key=np.operator.itemgetter(1))[0])
-        sleep(1)
+        answer.append(max(res.json()[0].items(), key=np.operator.itemgetter(1))[0])
+        sleep(0.1)
 
 
+    print(answer)
     return jsonify({"answer": answer})
 
 
