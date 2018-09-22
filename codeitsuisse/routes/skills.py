@@ -61,11 +61,14 @@ def evaluate_skill():
     while True:
 
         if len(frontier) == 0:
+            print("empty... ending")
             break
 
         node = frontier.pop(0)
         visited += 1
         print("visiting : {}".format(node.skill_name))
+        print("total offence: {}".format(node.total_offense))
+        print("ratio: {}".format(node.ratio))
 
         if node.total_offense >= target:
             print(node.ratio)
