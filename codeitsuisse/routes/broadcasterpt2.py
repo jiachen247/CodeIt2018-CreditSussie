@@ -3,8 +3,8 @@ from flask import request, jsonify;
 from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
-@app.route('/broadcaster/message-broadcast', methods=['POST','GET'])
-def evaluate_broadcaster():
+@app.route('/broadcaster/most-connected-node', methods=['POST','GET'])
+def evaluate_most_connected_node():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
     node_list = data.get("data");
