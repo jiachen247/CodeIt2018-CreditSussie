@@ -4,6 +4,7 @@ import numpy as np
 from sklearn import linear_model
 import requests
 from flask import request, jsonify
+from time import sleep
 
 from codeitsuisse import app
 logger = logging.getLogger(__name__)
@@ -14,8 +15,8 @@ def evaluate_deeplearning2():
     question = data.get("question")
     print(question[0])
     req = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=jsonify(question[0]))
-    print(req.text)
-
+    print(req.json())
+    # sleep(0.1)
     return
 
 
