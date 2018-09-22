@@ -16,13 +16,17 @@ def evaluate_deeplearning2():
     print(len(question))
 
     answer = []
+
+
+    def _invert(o):
+        return 255 - o
     for x in question:
-        res = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=x)
-        r = res.json().get("results")[1]
+        
+        res = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=list(map(_invert, x)))
+        r = res.json().get("results")[0]
 
         def _round(xx):
             return round(xx, 2)
-
 
         rr = list(map(_round, r))
 
@@ -41,7 +45,7 @@ def evaluate_deeplearning2():
             index += 1
 
         answer.append(maxx_index)
-        sleep(0.1)
+         # sleep(0.1)
 
 
     print(answer)
