@@ -1,10 +1,12 @@
 import exifread as ef
-from flask import request, jsonify;
+from flask import request, jsonify, logging
 from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
+
 @app.route('/imagesGPS', methods=['POST','GET'])
 def evaluate_imagesGPS():
+    print("sueijiksjkcbdkcnjsdnc")
     data = request.get_json();
     print(data)
     logging.info("data sent for evaluation {}".format(data))
