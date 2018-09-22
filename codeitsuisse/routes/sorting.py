@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 @app.route('/sorting-game', methods=['POST','GET'])
 def evaluate_sorting():
     data = request.get_json()
+    data = data.get("puzzle")
 
     input_string =[item for sublist in data for item in sublist]
     print(input_string)
