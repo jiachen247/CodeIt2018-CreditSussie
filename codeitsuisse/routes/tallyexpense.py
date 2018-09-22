@@ -10,6 +10,7 @@ logger = logging.getLogger(__name__)
 @app.route('/tally-expense', methods=['POST','GET'])
 def evaluate_tally_expense():
     data = request.get_json();
+    print("input: {}".format(data))
     logging.info("data sent for evaluation {}".format(data))
     list_of_persons = data.get("persons");
     tally = {}
@@ -48,4 +49,5 @@ def evaluate_tally_expense():
         balancer["transactions"].append(balances)
     result = balancer
     logging.info("My result :{}".format(result))
+    print("output: {}".format(results))
     return jsonify(result);
