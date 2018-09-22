@@ -21,7 +21,7 @@ def evaluate_sorting():
     dictToSend = {'size': size, 'values': ",".join(str(x) for x in input_list)}
     res = requests.post('https://sortingame.herokuapp.com/', json=dictToSend)
 
-    moves = res.text
+    moves = res.json()
     results = []
 
     def find_zero(p):
