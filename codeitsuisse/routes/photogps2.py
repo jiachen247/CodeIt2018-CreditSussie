@@ -40,7 +40,11 @@ def evaluate_imagesGPS():
     newlst = []
     for x in lst:
         lat = _convert_to_degress(x[2])
+        if x[1] == "S":
+            lat = -lat
         lon = _convert_to_degress(x[4])
+        if x[3] == "W":
+            lon = -lon
         newlst.append({"lat":lat,"lon":lon})
     result = newlst
     print(result)
