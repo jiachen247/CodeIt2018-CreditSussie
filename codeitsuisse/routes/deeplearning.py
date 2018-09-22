@@ -12,7 +12,7 @@ logger = logging.getLogger(__name__)
 def evaluate_deeplearning2():
     data = request.get_json()
     question = data.get("question")
-    req = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=question)
+    req = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=question[0])
     print(req.text)
 
     return
