@@ -11,16 +11,19 @@ def evaluate_broadcaster():
     print(node_list)
     broadcast = [[],[]]
     for x in node_list:
-        if x[0] in broadcast[1]:
-            broadcast[1].append(x[0])
+        (a, b) = x.split('->')
+        if a in broadcast[1]:
+            broadcast[1].append(a)
         else:
-            broadcast[0].append(x[0])
-        broadcast[1].append(x[-1])
+            broadcast[0].append(a)
+        broadcast[1].append(b)
     first = broadcast[0]
+    print(first)
     second = broadcast[1]
+    print(second)
     newlist = []
     for i in first:
-        if i not in newlist:
+        if i not in newlist and i not in second:
             newlist.append(i)
     result = newlist
     print(result)
