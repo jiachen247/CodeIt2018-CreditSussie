@@ -8,6 +8,7 @@ def evaluate_broadcaster():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
     node_list = data.get("data");
+    print(node_list)
     broadcast = [[],[]]
     for x in node_list:
         if x[0] in broadcast[1]:
