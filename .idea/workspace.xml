@@ -78,8 +78,7 @@
               <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
-                <marker date="1537637038016" expanded="true" signature="284:1191" ph="..." />
-                <marker date="1537637038016" expanded="true" signature="1128:1191" ph="..." />
+                <marker date="1537637346581" expanded="true" signature="1128:1191" ph="..." />
               </folding>
             </state>
           </provider>
@@ -99,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/codeitsuisse/routes/deeplearning.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="82">
-              <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+              <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -602,6 +601,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="197">
           <caret line="493" column="6" lean-forward="false" selection-start-line="493" selection-start-column="6" selection-end-line="493" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -708,8 +708,7 @@
           <caret line="9" column="25" lean-forward="true" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
-            <marker date="1537637038016" expanded="true" signature="284:1191" ph="..." />
-            <marker date="1537637038016" expanded="true" signature="1128:1191" ph="..." />
+            <marker date="1537637346581" expanded="true" signature="1128:1191" ph="..." />
           </folding>
         </state>
       </provider>
@@ -755,7 +754,7 @@
     <entry file="file://$PROJECT_DIR$/codeitsuisse/routes/deeplearning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="82">
-          <caret line="19" column="34" lean-forward="true" selection-start-line="19" selection-start-column="34" selection-end-line="19" selection-end-column="34" />
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>

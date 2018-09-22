@@ -13,11 +13,16 @@ logger = logging.getLogger(__name__)
 def evaluate_deeplearning2():
     data = request.get_json()
     question = data.get("question")
-    print(question[0])
-    res = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=question[0])
-    print(res.json())
-    # sleep(0.1)
-    return jsonify({"results": 1})
+    print(len(question))
+
+    answer = []
+    for x in question:
+        res = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=x)
+        answer.append(max(res.json().items(), key=np.operator.itemgetter(1))[0])
+        sleep(1)
+
+
+    return jsonify({"answer": answer})
 
 
 
