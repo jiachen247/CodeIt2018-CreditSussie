@@ -10,8 +10,9 @@ def evaluate_tetris():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
     tetros = data.get("tetronimoSequence");
+    print(tetros)
     seq = []
-    for x in tetros:
+    for x in range(len(tetros)):
         right = str(random.randint(0,8))
         turn = str(random.randint(0,3))
         seq.append(turn+right)
