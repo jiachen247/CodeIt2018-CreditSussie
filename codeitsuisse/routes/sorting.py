@@ -43,7 +43,7 @@ def evaluate_sorting():
 
     print("input: {}".format(data))
 
-    for move in moves():
+    for move in moves:
         print(move)
         results.append(swap_moves(data, move))
     return jsonify({ "result": results})
