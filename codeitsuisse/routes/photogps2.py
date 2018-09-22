@@ -1,6 +1,6 @@
 import exifread as ef
 from flask import request, jsonify, logging
-from codeitsuisse import app;
+from codeitsuisse import app
 
 logger = logging.getLogger(__name__)
 
@@ -16,7 +16,7 @@ def evaluate_imagesGPS():
     # {'path': "https://cis2018-photo-gps.herokuapp.com/images/sample2.jpg"},
     # {'path': "https://cis2018-photo-gps.herokuapp.com/images/sample3.jpg"},
     # {'path': "https://cis2018-photo-gps.herokuapp.com/images/sample4.jpg"},
-    # {'path': "https://cis2018-photo-gps.herokuapp.com/images/sample5.jpg"}] 
+    # {'path': "https://cis2018-photo-gps.herokuapp.com/images/sample5.jpg"}]
     def _convert_to_degress(value):
         """
         Helper function to convert the GPS coordinates stored in the EXIF to degress in float format
@@ -52,7 +52,7 @@ def evaluate_imagesGPS():
             else:
                 return {}
             return {'latitude': lat_value, 'longitude': lon_value}
-        return {} 
+        return {}
     lst = []
     for x in pathlist:
         filepath = x['path']
