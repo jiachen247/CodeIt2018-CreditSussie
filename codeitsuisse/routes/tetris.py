@@ -9,7 +9,8 @@ logger = logging.getLogger(__name__)
 def evaluate_tetris():
     data = request.get_json();
     logging.info("data sent for evaluation {}".format(data))
-    tetros = data.get("tetronimoSequence");
+    x = data.get();
+    tetros = x["tetrominoSequence"]
     print(tetros)
     seq = []
     for x in range(len(tetros)):
