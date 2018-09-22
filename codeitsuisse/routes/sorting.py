@@ -12,10 +12,10 @@ def evaluate_sorting():
     data = request.get_json()
     data = data.get("puzzle")
 
-    input_string =[item for sublist in data for item in sublist]
-    print(input_string)
+    input_list =[item for sublist in data for item in sublist]
+    print(input_list)
 
-    dictToSend = {'size': len(data), 'values': ",".join(input_string)}
+    dictToSend = {'size': len(data), 'values': ",".join(str(x) for x in input_list)}
     res = requests.post('https://sortingame.herokuapp.com/', json=dictToSend)
 
     print(res.text)
