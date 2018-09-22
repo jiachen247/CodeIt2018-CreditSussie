@@ -14,14 +14,14 @@ logger = logging.getLogger(__name__)
 def evaluate_deeplearning():
     data = request.get_data()
 
-    input = data.get("input")
+    inputt = data.get("input")
     output = data.get("output")
     question = data.get("question")
 
     d = []
     index = 0
 
-    for i in input:
+    for i in inputt:
         d.append({'x1': i[0], 'x2': i[1], 'x3': i[2], 'o': output[index]})
         index += 1
 
