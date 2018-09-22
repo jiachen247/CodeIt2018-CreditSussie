@@ -18,7 +18,7 @@ def evaluate_deeplearning2():
     answer = []
     for x in question:
         res = requests.post("https://tensorflow-mnist.herokuapp.com/api/mnist", json=x)
-        r = res.json().get("results")[0]
+        r = res.json().get("results")[1]
 
         def _round(xx):
             return round(xx, 2)
