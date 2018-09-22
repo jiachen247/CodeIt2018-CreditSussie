@@ -10,25 +10,33 @@ def evaluate_airtrafficcontroller():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
     print('//////////////  INPUT ///////////////', data)
+
     lof = data.get("Flights")
     secs = data.get("Static")
     seconds = int(secs["ReserveTime"])
 
     mins = (seconds/60)
     flight_list = []
+    dist = False
+    hold = []
     for x in lof:
         time = x["Time"]
         minss = int(time[0:2])*60 + int(time[2:4])
         num = x["PlaneId"]
-        flight_list.append([minss, num])
+        if "Distressed" in x.keys():
+            dist = True
+            hold.append([minss, num, x["Distressed"]])
+        else:
+            flight_list.append([minss, num])
     flight_list.sort()
+    if dist:
+        flight_list.insert(0, hold[0][0:2])
     if 'Runways' in secs.keys():
         runways = secs["Runways"]
         rw_lst = []
         for x in sorted(runways, reverse=True):
             rw_lst.append([x, 0])
         cur = len(rw_lst) - 1
-        print(rw_lst)
         for x in range(len(flight_list)):
             if x == 0:
                 flight_list[x].append(rw_lst[cur][0])
