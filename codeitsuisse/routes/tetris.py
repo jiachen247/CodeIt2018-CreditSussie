@@ -7,11 +7,10 @@ from codeitsuisse import app;
 logger = logging.getLogger(__name__)
 @app.route('/tetris', methods=['POST','GET'])
 def evaluate_tetris():
-    data = request.get_json();
+    data = request.get_json()
+    print(data)
     logging.info("data sent for evaluation {}".format(data))
-    x = data.get();
-    tetros = x["tetrominoSequence"]
-    print(tetros)
+    tetros = data["tetrominoSequence"]
     seq = []
     for x in range(len(tetros)):
         right = str(random.randint(0,8))
