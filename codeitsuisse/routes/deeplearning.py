@@ -8,10 +8,14 @@ from flask import request, jsonify
 from codeitsuisse import app
 logger = logging.getLogger(__name__)
 
+@app.route('/machine-learning/question-2', methods=['POST'])
+def evaluate_deeplearning2():
+    return ""
+
 
 
 @app.route('/machine-learning/question-1', methods=['POST'])
-def evaluate_deeplearning():
+def evaluate_deeplearning1():
     data = request.get_json()
 
     inputt = data.get("input")
