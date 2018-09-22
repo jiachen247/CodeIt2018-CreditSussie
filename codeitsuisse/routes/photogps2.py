@@ -4,7 +4,7 @@ from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
 
-@app.route('/imagesGps', methods=['POST','GET'])
+@app.route('/imagesGPS', methods=['POST','GET'])
 def evaluate_imagesGPS():
     print("sueijiksjkcbdkcnjsdnc")
     data = request.get_json();
