@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="97a60b16-1e21-453a-8954-2a42d0a33cdf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codeitsuisse/routes/deeplearning.py" afterPath="$PROJECT_DIR$/codeitsuisse/routes/deeplearning.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codeitsuisse/__init__.py" afterPath="$PROJECT_DIR$/codeitsuisse/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/codeitsuisse/routes/photogps2.py" afterPath="$PROJECT_DIR$/codeitsuisse/routes/photogps2.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -72,14 +72,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="photogps2.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="photogps2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/codeitsuisse/routes/photogps2.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="85">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#21#0" expanded="true" />
-              </folding>
+              <caret line="5" column="6" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,7 +92,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="deeplearning.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="deeplearning.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/codeitsuisse/routes/deeplearning.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="252">
@@ -169,8 +167,8 @@
         <option value="$PROJECT_DIR$/codeitsuisse/__init__.py" />
         <option value="$PROJECT_DIR$/dev.py" />
         <option value="$PROJECT_DIR$/requirements.txt" />
-        <option value="$PROJECT_DIR$/codeitsuisse/routes/photogps2.py" />
         <option value="$PROJECT_DIR$/codeitsuisse/routes/deeplearning.py" />
+        <option value="$PROJECT_DIR$/codeitsuisse/routes/photogps2.py" />
       </list>
     </option>
   </component>
@@ -737,16 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/codeitsuisse/routes/photogps2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/codeitsuisse/routes/deeplearning.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -754,6 +742,14 @@
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/codeitsuisse/routes/photogps2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="6" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <folding />
         </state>
       </provider>
     </entry>
