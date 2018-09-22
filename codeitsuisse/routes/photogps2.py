@@ -7,12 +7,9 @@ logger = logging.getLogger(__name__)
 
 @app.route('/imagesGPS', methods=['POST','GET'])
 def evaluate_imagesGPS():
-    print("sueijiksjkcbdkcnjsdnc")
     data = request.get_json();
     print(data)
     logging.info("data sent for evaluation {}".format(data))
-    pathlist = data.get()
-    print('Input:', pathlist)
     # pathlist = [{'path': "https://cis2018-photo-gps.herokuapp.com/images/sample1.jpg"},
     # {'path': "https://cis2018-photo-gps.herokuapp.com/images/sample2.jpg"},
     # {'path': "https://cis2018-photo-gps.herokuapp.com/images/sample3.jpg"},
@@ -55,7 +52,7 @@ def evaluate_imagesGPS():
             return {'latitude': lat_value, 'longitude': lon_value}
         return {} 
     lst = []
-    for x in pathlist:
+    for x in data:
         filepath = x['path']
         gps = getGPS(filepath)
         print(gps)
