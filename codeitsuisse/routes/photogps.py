@@ -5,6 +5,7 @@ import PIL
 import json 
 from PIL import Image
 from PIL.ExifTags import TAGS, GPSTAGS 
+import urllib.request
 
 app = Flask(__name__)
 
@@ -15,45 +16,27 @@ def upload_file():
 	content = request.get_json()
 	print('hi')
 	print (content)
-	# TODO : remember to add in the method
 	return jsonify(main(content))
 
+def main(content):
 
+    # loop through every image in the list of json 
+    lat_lon_list = []
 
-# @app.route('/square', methods=['POST'])
-# def evaluate():
-#     data = request.get_json();
-#     logging.info("data sent for evaluation {}".format(data))
-#     inputValue = data.get("input");
-#     result = inputValue * inputValue
-#     logging.info("My result :{}".format(result))
-#     return jsonify(result);
+    n = 0
+    for every_image in content:
+       n += 1 
+	   image_url = every_image["path"]
+       urllib.urlretrieve(image_url, "{count}.jpg".format(count=n))
 
-def main():
+       image = Image.open("{count}.jpg".format(count=n))
 
-	# for i in images_path:
+       # get all the exif_data from each image 
+	   exif_data = get_exif_data(image)
+        lat, lon = get_lat_lon(exif_data)
+        lat_lon_list.append(list("lat":lat, "lon": lon)) 
 
-	# 	print (i["path"]);
-
-	# with open('images_path.json') as f:
-	# 	data = json.load(f)
-
-	# image = Image.open("IMG_7055.jpg")
-	# info = image._getexif()
-
-	# for tag, value in info.items():
-	# 	key = TAGS.get(tag, tag)
-
-	# 	if key == "SubjectLocation":
-	# 		print(key + " " + str(value))
-
-		# print(key + " " + str(value))
-
-	image = Image.open("IMG_7175.jpg")
-	exif_data = get_exif_data(image)
-	print (exif_data)
-
-	return get_lat_lon(exif_data)
+    return lat_lon_list
 
 def get_exif_data(image):
     """Returns a dictionary from the exif data of an PIL Image item. Also converts the GPS Tags"""
@@ -122,9 +105,6 @@ def get_lat_lon(exif_data):
                 lon = 0 - lon
 
     return lat, lon
-
-
-
 
 if __name__ == '__main__':
 	app.run(debug=True)
