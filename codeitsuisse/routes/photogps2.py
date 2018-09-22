@@ -1,5 +1,6 @@
 import exifread as ef
-from flask import request, jsonify, logging
+from flask import request, jsonify
+import logging
 from codeitsuisse import app;
 
 logger = logging.getLogger(__name__)
