@@ -31,6 +31,6 @@ def evaluate_prime_sum():
             primer(inp - 3)
     primer(inputValue)
     result = pris
-    logging.info("My result :{}".format(result))
     print(result)
+    logging.info("My result :{}".format(result))
     return jsonify(result);
