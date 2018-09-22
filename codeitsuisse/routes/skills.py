@@ -1,3 +1,4 @@
+import bisect
 import logging
 
 from flask import request, jsonify
@@ -27,6 +28,16 @@ def evaluate_skill():
                 return indexes[self.skill_name]
             else:
                 return []
+
+        def __eq__(self, rhs):
+            if isinstance(rhs, Node):
+                return self.skill_name == rhs.ratio
+            else:
+                return rhs == self
+
+        def __lt__(self, rhs):
+            # when comparing nodes (sorting), compare their estimates (so they are sorted by estimates)
+            return self.ratio < rhs.ratio
 
     data = request.get_json()
 
@@ -81,7 +92,8 @@ def evaluate_skill():
             if new_node not in frontier and new_node not in explored:
                 # use bisect to insert the node at the proper place in the frontier
                 # bisect.insort(frontier, new_node)
-                frontier.insert(0, new_node)
+                #bisect.insort(frontier, new_node)
+                frontier.append(new_node)
 
         explored.append(node)
 
