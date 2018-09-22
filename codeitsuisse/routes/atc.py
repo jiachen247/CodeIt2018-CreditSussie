@@ -34,7 +34,7 @@ def evaluate_airtrafficcontroller():
     if 'Runways' in secs.keys():
         runways = secs["Runways"]
         rw_lst = []
-        for x in sorted(runways, reverse=True):
+        for x in runways:
             rw_lst.append([x, 0])
         cur = len(rw_lst) - 1
         for x in range(len(flight_list)):
