@@ -6,10 +6,13 @@ import json
 from PIL import Image
 from PIL.ExifTags import TAGS, GPSTAGS 
 import urllib.request
+import logging
 
-app = Flask(__name__)
+# app = Flask(__name__)
 
-@app.route('/imagesGPS', methods=['POST'])
+logger = logging.getLogger(__name__)
+
+@app.route('/imagesGPS', methods=['POST', 'GET'])
 def upload_file():
 
     # content = request.get_json()
