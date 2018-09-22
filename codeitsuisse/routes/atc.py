@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 def evaluate_airtrafficcontroller():
     data = request.get_json()
     logging.info("data sent for evaluation {}".format(data))
-
+    print('//////////////  INPUT ///////////////', data)
     lof = data.get("Flights")
     secs = data.get("Static")
     seconds = int(secs["ReserveTime"])
