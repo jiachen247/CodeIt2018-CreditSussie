@@ -49,5 +49,5 @@ def evaluate_tally_expense():
         balancer["transactions"].append(balances)
     result = balancer
     logging.info("My result :{}".format(result))
-    print("output: {}".format(results))
+    print("output: {}".format(result))
     return jsonify(result);
