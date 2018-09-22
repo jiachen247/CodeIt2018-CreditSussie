@@ -14,45 +14,32 @@ logger = logging.getLogger(__name__)
 
 @app.route('/imagesGPS', methods=['POST', 'GET'])
 def upload_file():
-
     logging.info("data sent for evaluation {}".format(data))
     content = request.get_json()
-    
     return jsonify(main(content))
-
 def main(content):
-
     # loop through every image in the list of json 
     lat_lon_list = []
-
     n = 0
     for every_image in content:
         print (every_image)
         n += 1
-        
     # if (every_image['path']):
-
-
         image_url = every_image['path']            
         # print (image_url)
         urllib.request.urlretrieve(image_url, "{count}.jpg".format(count=n))
-
         image = Image.open("{count}.jpg".format(count=n))
         # get all the exif_data from each image
         exif_data = get_exif_data(image)
         lat, lon = get_lat_lon(exif_data)
         lat_lon_list.append({"lat":lat, "lon": lon})
-
         # else: 
         #     print("second")
-
     return lat_lon_list
-
 def get_exif_data(image):
     """Returns a dictionary from the exif data of an PIL Image item. Also converts the GPS Tags"""
     global decoded
     exif_data = {}
-
     # try:
     info = image._getexif()
     if info:
@@ -67,18 +54,12 @@ def get_exif_data(image):
             exif_data[decoded] = gps_data
         else:
             exif_data[decoded] = value
-
     return exif_data
-
-
 def get_if_exist(data, key):
     if key in data:
         return data[key]
-
     return None
-
 def _convert_to_degress(value):
-
     """Helper function to convert the GPS coordinates stored in the EXIF to degress in float format"""
     d0 = value[0][0]
     d1 = value[0][1]
@@ -91,15 +72,12 @@ def _convert_to_degress(value):
     s0 = value[2][0]
     s1 = value[2][1]
     s = float(s0) / float(s1)
-
     return d + (m / 60.0) + (s / 3600.0)
-
 def get_lat_lon(exif_data):
     print ("getting lat and lon")
     """Returns the latitude and longitude, if available, from the provided exif_data (obtained through get_exif_data above)"""
     lat = None
     lon = None
-
     if "GPSInfo" in exif_data:
         gps_info = exif_data["GPSInfo"]
 
@@ -119,7 +97,6 @@ def get_lat_lon(exif_data):
 
             if gps_longitude_ref != "E":
                 lon = 0 - lon
-
     return lat, lon
 
 # if __name__ == '__main__':
