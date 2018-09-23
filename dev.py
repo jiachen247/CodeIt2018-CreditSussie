@@ -1,151 +1,108 @@
-# 1. Sorting Game
-import sys
+import bisect
 
-sys.setrecursionlimit(362880000)
+import array
 
-puzzle = (
-    (1,2,3),
-(4,8,5),
-(7,6,0)
-)
+skills = [
+    {
+      "name": "Grapple Gun",
+      "offense": 5,
+      "points": 1,
+      "require": None
+    },
+    {
+      "name": "Hacking Device",
+      "offense": 6,
+      "points": 2,
+      "require": "Grapple Gun"
+    },
+    {
+      "name": "Remote",
+      "offense": 7,
+      "points": 3,
+      "require": "Hacking Device"
+    },
+    {
+      "name": "Bomb",
+      "offense": 20,
+      "points": 5,
+      "require": "Remote"
+    },
+    {
+      "name": "Inverted takedown",
+      "offense": 5,
+      "points": 1,
+      "require": None
+    },
+    {
+      "name": "Shockwave attack",
+      "offense": 8,
+      "points": 3,
+      "require": "Inverted takedown"
+    }
+]
 
-x_matrix_dimensions = len(puzzle)
-y_matrix_dimensions = len(puzzle)
-
-state = []
-
-SOLN = (
-    (1,2,3),
-    (4,5,6),
-    (7,8,0)
-)
+target = 11
 
 
-def check(p):
 
-    if p[x_matrix_dimensions-1][y_matrix_dimensions-1] != 0:
-        return False
 
+
+
+for skill in skills:
+    name = skill.get("name")
+    require = skill.get("require")
+
+    skillz[name] = skill
+    if require in indexes:
+        indexes[require].append(name)
     else:
-        i =[item for sublist in p for item in sublist]
-        print(i)
+        indexes[require] = [name]
 
-        for a in range(x_matrix_dimensions * y_matrix_dimensions):
-            if a == x_matrix_dimensions * y_matrix_dimensions - 1:
-                if p[a] == 0:
-                    return True
-            if i[a] > i[a+1]
+print(indexes)
+print(skillz)
+# start with the first none
 
+frontier = [Node(skillz.get(index), None , 0, 0) for index in indexes[None]]
+explored = []
+visited = 0
 
-    return True
+while True:
 
-def find_zero(p):
+    if len(frontier) == 0 :
+        break
 
-    for x in range(x_matrix_dimensions):
-        for y in range(y_matrix_dimensions):
-            if p[x][y] == 0:
-                return [x,y]
+    node = frontier.pop(0)
+    visited += 1
+    print("visiting : {}".format(node.skill_name))
 
-    print("[+] zero not found.")
-    return [-1, -1]
-
-
-
-def calculate_moves(p, zero_index):
-
-    moves = []
-
-    x = zero_index[0]
-    y = zero_index[1]
-    print(x,y)
-
-    if y > 0:
-        if y == 1:
-            if not (p[0][0] == 1 and p[1][0] == 4 and p[2][0] == 7):
-                moves.append([x, y - 1])
-            else:
-                print("147 done")
-        else:
-            moves.append([x, y - 1])
-    if y < 2:
-        moves.append([x, y+1])
-
-    if x > 0:
-        if x == 1:
-            print("x == 1")
-            if p[0] != (1, 2, 3):
-                moves.append([x - 1, y])
-            else:
-                print("123 done")
-        else:
-            moves.append([x - 1, y])
-
-    if x < 2:
-        moves.append([x + 1, y])
-
-    print(moves)
-    return moves
-
-TARGET_HASH = 304
-
-def swap_moves(p, zero_index, target):
-    p1 = [list(x) for x in p]
-    p1[zero_index[0]][zero_index[1]] = p1[target[0]][target[1]]
-    p1[target[0]][target[1]] = 0
-    return tuple(p1)
-
-def solve(p, history):
-    print(p)
-    global state
-    # print("P : {}".format(p))
-    #print("s: {}".format(state))
-    # current_hash = _hash(p)
-    # print("HASH : {}".format(current_hash))
-
-    if p == SOLN:
-        print("FOUNDDDDDDDDDD PLS")
-        return p
-
-    if p in state:
-        print("repeat")
-        return None
-
-    state  = state + [p]
-    zero_index = find_zero(p)
-
-    moves = calculate_moves(p, zero_index)
-
-    for move in moves:
-        # print("history {}".format(history))
-        target = p[move[0]][move[1]]
-
-        newp = swap_moves(p, zero_index, move)
-        if newp not in state:
-            history.append(target)
-            if solve(newp, history[:]) is not None:
-                print("FOUNDDDD FOUNDDD")
-                # print(history)
-                return history
-
-    # print("endign state : {}".format(state))
-    # return None
+    if node.total_offense >= target:
+        print(node.ratio)
+        if node.ratio > best_ratio:
+            best_ratio = node.ratio
+            best_skill = node
 
 
 
+    for sk in node.get_next():
+        new_node = Node(skillz.get(sk),node, node.offence, node.points )
+        if new_node not in frontier and new_node not in explored:
+            # use bisect to insert the node at the proper place in the frontier
+            #bisect.insort(frontier, new_node)
+            frontier.insert(0, new_node)
 
-
-# print(_hash([
-#     [1,2,3],
-#     [4,5,6],
-#     [7,8,0]
-# ])) # 304
-
-check(puzzle)
-# print(solve(puzzle, []))
+    explored.append(node)
 
 
 
-# caculate possible moves
+moves = []
+while True:
+    moves.append(best_skill.skill_name)
+    if best_skill.parent != None:
+        best_skill = best_skill.parent
+    else:
+        break
+moves.reverse()
+print(moves)
 
 
 
